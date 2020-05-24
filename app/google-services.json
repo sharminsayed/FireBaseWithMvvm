@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "665945028641",
+    "firebase_url": "https://notebookwithmvvm.firebaseio.com",
+    "project_id": "notebookwithmvvm",
+    "storage_bucket": "notebookwithmvvm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:665945028641:android:e779af3ad8b4cf87de4b60",
+        "android_client_info": {
+          "package_name": "com.gh0stcr4ck3r.firebasewithmvvm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "665945028641-ol77c5ef6b4sckpkotrffijv0hb6b4r2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gh0stcr4ck3r.firebasewithmvvm",
+            "certificate_hash": "52d3669cbaffddf1544ee377b761190ce0ac2e5f"
+          }
+        },
+        {
+          "client_id": "665945028641-hfjqk0teiea2k1equqbnkm1fhee6s4r4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzgkMBV8_PaoQ2K6HRTBa17imqpePBsyU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "665945028641-hfjqk0teiea2k1equqbnkm1fhee6s4r4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
