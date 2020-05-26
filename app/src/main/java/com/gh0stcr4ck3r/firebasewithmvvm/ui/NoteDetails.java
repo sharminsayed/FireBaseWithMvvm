@@ -43,6 +43,10 @@ public class NoteDetails extends AppCompatActivity {
         setContentView(R.layout.activity_note_details);
         updateTitle = findViewById(R.id.updatetitle);
         UpdateDescription = findViewById(R.id.updatedesc);
+
+        //ene auth mauth kn?ami pore remv kormuni delete mvvm chara mvvm charai delete ta check kore dia jaaoooooooo
+        //ok
+
         Intent intent = getIntent();
         nid = intent.getStringExtra("nid");
         mAuth = FirebaseAuth.getInstance();
@@ -55,8 +59,10 @@ public class NoteDetails extends AppCompatActivity {
         noteViewModel.retriveNoteData(nid).observe(this, new Observer<NoteModel>() {
             @Override
             public void onChanged(NoteModel noteModel) {
-                updateTitle.setText(noteModel.getTitle());
-                UpdateDescription.setText(noteModel.getDescription());
+                if (noteModel!=null){
+                    updateTitle.setText(noteModel.getTitle());
+                    UpdateDescription.setText(noteModel.getDescription());
+                }
 
 
             }
@@ -82,12 +88,12 @@ public class NoteDetails extends AppCompatActivity {
     public void updateNote(View view) {
         String uTitle = updateTitle.getText().toString();
         String uDescription = UpdateDescription.getText().toString();
-
         NoteModel noteModel = new NoteModel();
+        noteModel.setUid(nid);
         noteModel.setTitle(uTitle);
         noteModel.setDescription(uDescription);
-
         noteViewModel.getUpdateData(noteModel);
+        startActivity(new Intent(NoteDetails.this, NoteListActivity.class));
 
     }
 
@@ -102,10 +108,27 @@ public class NoteDetails extends AppCompatActivity {
 
         if (databaseReference.removeValue().isComplete()) {
             Toast.makeText(getApplicationContext(), "Deleted", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(NoteDetails.this,NoteListActivity.class));
 
 
         }
 
+//test koro ok
+        //delete koira dile to ar details thakbo na tokhn ki show korba?kisui na list a jaiboga
+        //amr kin2 delete toast msg asena
+        //local databse theke delte korar function koi?local database a delete korar function laghbo ken
+         //delete mane ekdom database theka delete//room a save ase?room theka dekete kora laghbe
+        //tomar data 2 jaygay save hoiitase firebase plus room
+        //2 khan theika separartely delete kora lagbo//ok //e//dhonnobad whts app a asen ektu
 
+        //room dia ekhon o korini oita ami pore kortasi apatoto amre firebase theka delete ta dekhao
+        //taile browser e firebase console ber koro d
+        //firebase theka delete hoy but app crush khaitasilo//run kormu?ho//delete hoyna
+        //konta delte korba kou
+        //apps ar madhome ekhon sharmin dia login korsi oitar data e delete kormu
+        //title or nam kisu ekta kou
+        //abar run ditasi thn nam koi
+        //delet kowar age nam koba//title1
+        //ok//database theka delete hoise but amr to kono tst msg asenai r mbl theka mane recycle er thekaodelete hoyni
     }
 }

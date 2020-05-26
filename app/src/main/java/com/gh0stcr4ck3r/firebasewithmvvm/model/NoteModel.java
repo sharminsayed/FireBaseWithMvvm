@@ -1,5 +1,6 @@
 package com.gh0stcr4ck3r.firebasewithmvvm.model;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -11,19 +12,28 @@ import androidx.room.PrimaryKey;
  **/
 @Entity(tableName = "note_table")
 public class NoteModel {
+    @PrimaryKey(autoGenerate = false)
+    @NonNull//eikhane tmr kotha anujayi change korsi
     private String uid;
     private String title;
     private String description;
-    @PrimaryKey(autoGenerate = true)
-    private Integer nid;
+
+
     public NoteModel() {
     }
 
-    public NoteModel(String uid, String title, String description, Integer nid) {
+    public NoteModel(String uid, String title, String description) {
         this.uid = uid;
         this.title = title;
         this.description = description;
-        this.nid = nid;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public String getTitle() {
@@ -42,29 +52,12 @@ public class NoteModel {
         this.description = description;
     }
 
-    public String getUid() {
-        return uid;
-    }
-
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
-
-    public Integer getNid() {
-        return nid;
-    }
-
-    public void setNid(Integer nid) {
-        this.nid = nid;
-    }
-
     @Override
     public String toString() {
         return "NoteModel{" +
                 "uid='" + uid + '\'' +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", nid=" + nid +
                 '}';
     }
 }

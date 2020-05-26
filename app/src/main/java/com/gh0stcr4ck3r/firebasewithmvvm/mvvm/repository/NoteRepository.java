@@ -57,17 +57,26 @@ public class NoteRepository {
         database = FirebaseDatabase.getInstance();
         noteModel=new NoteModel();
         mutableLiveData = new MutableLiveData<>();
-
-
         uid = fUser.getUid();
-        databaseReference = database.getReference().child(uid).child("notes").child(nid);;
+        databaseReference = database.getReference().child(uid).child("notes");
 
 
     }
+
+
+
 
     public LiveData<List<NoteModel>> getAllnotes() {
         return noteModelList;
     }
+
+
+
+
+
+
+
+
 
     public void insert(NoteModel noteModel) {
         new insertAsyncTask(noteDao).execute(noteModel);
@@ -90,12 +99,10 @@ public class NoteRepository {
     }
 
     public void updateNote(final NoteModel noteModel){
-
-        noteModel.setUid(nid);//ei line ta bujhini
-        databaseReference.setValue(noteModel).addOnSuccessListener(new OnSuccessListener<Void>() {
+        new updatenoteAsyctask(noteDao).execute(noteModel);
+        databaseReference.child(noteModel.getUid()).setValue(noteModel).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                new updatenoteAsyctask(noteDao).execute(noteModel);
 
 
             }

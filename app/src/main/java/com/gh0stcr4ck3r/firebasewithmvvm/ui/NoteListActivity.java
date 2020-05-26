@@ -27,14 +27,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NoteListActivity extends AppCompatActivity {
-    private DatabaseReference databaseReference;
-    private FirebaseUser fUser;
-    private FirebaseAuth mAuth;
     private NoteAdapter adapter;
-    private String uid;
     private RecyclerView recyclerView;
     private List<NoteModel> noteModelList;
-    private FirebaseDatabase database;
     private NoteViewModel noteViewModel;
 
     @Override
@@ -42,25 +37,18 @@ public class NoteListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note);
 
-        mAuth=FirebaseAuth.getInstance();
-        fUser = mAuth.getCurrentUser();
-        database=FirebaseDatabase.getInstance();
-        uid=fUser.getUid();
-        databaseReference = database.getReference().child(uid).child("notes");
-
-
-        noteModelList=new ArrayList<>();
+        noteModelList = new ArrayList<>();
         recyclerView = findViewById(R.id.noteRecycle);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter=new NoteAdapter(noteModelList, this, new NoteAdapter.OnItemClicked() {
+        adapter = new NoteAdapter(noteModelList, this, new NoteAdapter.OnItemClicked() {
             @Override
             public void onClicked(NoteModel noteModel) {
 
-                String gId = noteModel.getUid().toString();
                 Intent intent = new Intent(getApplicationContext(), NoteDetails.class);
-                intent.putExtra("nid", gId);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("nid", noteModel.getUid());//tmi delete function ta dekho to eidik ar kaj ki sesh???
+                //dkho update fix hoise naki
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);//ha hoise now delete jhamela kortase
                 startActivity(intent);
             }
 
@@ -71,8 +59,7 @@ public class NoteListActivity extends AppCompatActivity {
         });
         adapter.setNoteModelList(noteModelList);
         recyclerView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
-        noteViewModel= ViewModelProviders.of(this).get(NoteViewModel.class);
+        noteViewModel=ViewModelProviders.of(this).get(NoteViewModel.class);
         noteViewModel.getAllNoteData().observe(this, new Observer<List<NoteModel>>() {
             @Override
             public void onChanged(List<NoteModel> noteModels) {
@@ -81,13 +68,32 @@ public class NoteListActivity extends AppCompatActivity {
         });
 
 
-    }
 
+    }
 
 
     public void openContactDialog(View view) {
         startActivity(new Intent(NoteListActivity.this, TakeNoteActivity.class));
     }
+
+//    private void getNoteList() {
+//        databaseReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                noteModelList.clear();
+//                for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
+//                    NoteModel noteModel = childSnapshot.getValue(NoteModel.class);
+//                    noteModelList.add(noteModel);
+//                }
+//                adapter.notifyDataSetChanged();
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+//    }
 
 
 }

@@ -26,24 +26,21 @@ public class NoteViewModel extends AndroidViewModel {
         mRepository=new NoteRepository(application);
         noteModelList=mRepository.getAllnotes();
     }
+
     public LiveData<List<NoteModel>> getAllNoteData() {
         return noteModelList;
     }
 
-    public void insert(NoteModel noteModel) {
-        mRepository.insert(noteModel);
-    }
     public void getAddData(NoteModel noteModel){
         mRepository.addNote(noteModel);
     }
+
+
   public MutableLiveData<NoteModel>retriveNoteData(String nid){
         return mRepository.retriveData(nid);
   }
 
 
-    public void update(NoteModel noteModel) {
-        mRepository.update(noteModel);
-    }
     public void getUpdateData(NoteModel noteModel){
         mRepository.updateNote(noteModel);
     }
