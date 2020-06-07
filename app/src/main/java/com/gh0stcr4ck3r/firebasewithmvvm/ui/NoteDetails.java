@@ -35,7 +35,6 @@ public class NoteDetails extends AppCompatActivity {
     EditText updateTitle, UpdateDescription;
     String uid, nid;
     NoteViewModel noteViewModel;
-    private NoteModel noteModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +43,6 @@ public class NoteDetails extends AppCompatActivity {
         updateTitle = findViewById(R.id.updatetitle);
         UpdateDescription = findViewById(R.id.updatedesc);
 
-        //ene auth mauth kn?ami pore remv kormuni delete mvvm chara mvvm charai delete ta check kore dia jaaoooooooo
-        //ok
 
         Intent intent = getIntent();
         nid = intent.getStringExtra("nid");
@@ -113,22 +110,6 @@ public class NoteDetails extends AppCompatActivity {
 
         }
 
-//test koro ok
-        //delete koira dile to ar details thakbo na tokhn ki show korba?kisui na list a jaiboga
-        //amr kin2 delete toast msg asena
-        //local databse theke delte korar function koi?local database a delete korar function laghbo ken
-         //delete mane ekdom database theka delete//room a save ase?room theka dekete kora laghbe
-        //tomar data 2 jaygay save hoiitase firebase plus room
-        //2 khan theika separartely delete kora lagbo//ok //e//dhonnobad whts app a asen ektu
 
-        //room dia ekhon o korini oita ami pore kortasi apatoto amre firebase theka delete ta dekhao
-        //taile browser e firebase console ber koro d
-        //firebase theka delete hoy but app crush khaitasilo//run kormu?ho//delete hoyna
-        //konta delte korba kou
-        //apps ar madhome ekhon sharmin dia login korsi oitar data e delete kormu
-        //title or nam kisu ekta kou
-        //abar run ditasi thn nam koi
-        //delet kowar age nam koba//title1
-        //ok//database theka delete hoise but amr to kono tst msg asenai r mbl theka mane recycle er thekaodelete hoyni
     }
 }

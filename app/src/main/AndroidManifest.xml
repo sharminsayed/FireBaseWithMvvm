@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.NoteDetails"></activity>
+        <activity android:name=".ui.ForgetPasswordActivity"></activity>
+        <activity android:name=".ui.NoteDetails" />
         <activity android:name=".ui.TakeNoteActivity" />
         <activity android:name=".ui.NoteListActivity" />
         <activity android:name=".ui.SignUpActivity" />

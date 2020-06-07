@@ -14,6 +14,7 @@ import com.gh0stcr4ck3r.firebasewithmvvm.R;
 import com.gh0stcr4ck3r.firebasewithmvvm.model.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -26,6 +27,7 @@ public class SignUpActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
     private FirebaseUser fUser;
+    private FirebaseAnalytics mFirebaseAnalytics;
 
 
     @Override
@@ -38,6 +40,7 @@ public class SignUpActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference();
         fUser = mAuth.getCurrentUser();
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
     }
 
     private boolean registerValidUser() {
@@ -80,6 +83,10 @@ public class SignUpActivity extends AppCompatActivity {
         });
     }
     public void signUpMethod(View view) {
+        Bundle params = new Bundle();
+       // params.putString("image_name", name);
+        params.putString("text", String.valueOf(view.getId()));
+
        // register();
         if (registerValidUser()) {
 
@@ -94,6 +101,7 @@ public class SignUpActivity extends AppCompatActivity {
 
             createUser(user);
         }
+        mFirebaseAnalytics.logEvent("textname", params);
 
 
     }

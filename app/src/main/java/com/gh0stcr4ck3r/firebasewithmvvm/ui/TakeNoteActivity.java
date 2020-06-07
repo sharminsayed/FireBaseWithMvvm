@@ -23,7 +23,6 @@ import java.util.List;
 public class TakeNoteActivity extends AppCompatActivity {
     EditText title,desc;
 
-    private DatabaseReference databaseReference;
     private FirebaseUser fUser;
     private FirebaseAuth mAuth;
     private FirebaseDatabase database;

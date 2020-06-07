@@ -107,4 +107,8 @@ public class LoginActivity extends AppCompatActivity {
         sharedPref.saveuID(id);
 
     }
+
+    public void forgetPw(View view) {
+        startActivity(new Intent(getApplicationContext(), ForgetPasswordActivity.class));
+    }
 }
