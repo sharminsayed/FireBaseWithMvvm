@@ -9,23 +9,31 @@
     android:orientation="vertical">
 
     <EditText
+        android:padding="5dp"
         android:id="@+id/updatetitle"
         android:hint="enter Title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <EditText
+        android:padding="5dp"
         android:id="@+id/updatedesc"
         android:hint="enter description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <Button
-        android:layout_width="match_parent"
+        android:background="@color/colorPrimaryDark"
+        android:layout_gravity="center"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="save"
+        android:text="update"
+        android:layout_margin="12dp"
         android:onClick="updateNote"/>
     <Button
-        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        android:layout_gravity="center"
+        android:layout_width="200dp"
+        android:layout_margin="12dp"
         android:layout_height="wrap_content"
         android:text="delete"
         android:onClick="deleteNote"/>

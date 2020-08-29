@@ -5,21 +5,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.SplashActivity">
+    tools:context=".ui.SplashActivity"
+    android:gravity="center"
+    android:background="#F6F2F2">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="gotoLogin">
 
-    </Button>
+   <TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Welcome to MVVM"
+       android:textColor="@color/colorPrimaryDark"
+       android:textSize="30sp"
+       android:textAlignment="center"
+       android:background="#fff">
 
+ </TextView>
 </RelativeLayout>

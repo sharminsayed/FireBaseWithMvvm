@@ -46,9 +46,9 @@ public class NoteListActivity extends AppCompatActivity {
             public void onClicked(NoteModel noteModel) {
 
                 Intent intent = new Intent(getApplicationContext(), NoteDetails.class);
-                intent.putExtra("nid", noteModel.getUid());//tmi delete function ta dekho to eidik ar kaj ki sesh???
-                //dkho update fix hoise naki
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);//ha hoise now delete jhamela kortase
+                intent.putExtra("nid", noteModel.getUid());
+
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
 
@@ -64,6 +64,7 @@ public class NoteListActivity extends AppCompatActivity {
             @Override
             public void onChanged(List<NoteModel> noteModels) {
                 adapter.setNoteModelList(noteModels);
+                noteModelList.clear();
             }
         });
 

@@ -54,6 +54,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
           public void onClick(View v) {
               listener.onClicked(noteModel);
 
+
           }
       });
       holder.cardView.setOnLongClickListener(new View.OnLongClickListener() {

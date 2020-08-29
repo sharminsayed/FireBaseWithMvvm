@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
@@ -119,6 +120,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                             FirebaseUser firebaseUser = mAuth.getCurrentUser();
                             saveProfile(user, firebaseUser.getUid());
+                            Log.d("+++++",String.valueOf(firebaseUser.getUid()));
                             startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
 
                         } else {

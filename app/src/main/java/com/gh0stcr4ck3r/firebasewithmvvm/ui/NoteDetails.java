@@ -25,6 +25,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NoteDetails extends AppCompatActivity {
@@ -35,6 +36,7 @@ public class NoteDetails extends AppCompatActivity {
     EditText updateTitle, UpdateDescription;
     String uid, nid;
     NoteViewModel noteViewModel;
+    private List<NoteModel> noteModelList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +45,7 @@ public class NoteDetails extends AppCompatActivity {
         updateTitle = findViewById(R.id.updatetitle);
         UpdateDescription = findViewById(R.id.updatedesc);
 
-
+        noteModelList = new ArrayList<>();
         Intent intent = getIntent();
         nid = intent.getStringExtra("nid");
         mAuth = FirebaseAuth.getInstance();
@@ -104,8 +106,13 @@ public class NoteDetails extends AppCompatActivity {
     public void DelteNoteData() {
 
         if (databaseReference.removeValue().isComplete()) {
+            noteModelList.clear();
+
             Toast.makeText(getApplicationContext(), "Deleted", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(NoteDetails.this,NoteListActivity.class));
+
+
+
 
 
         }
